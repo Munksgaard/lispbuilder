@@ -158,25 +158,25 @@
 
 (defun key-scancode (sdl-event)
   (cffi:foreign-slot-value (cffi:foreign-slot-pointer sdl-event
-                                                      'sdl-cffi::sdl-keyboard-event
+                                                      '(:struct  sdl-cffi::sdl-keyboard-event)
                                                       'sdl-cffi::keysym)
                            'sdl-cffi::sdl-key-sym 'sdl-cffi::scancode))
 
 (defun key-key (sdl-event)
   (cffi:foreign-slot-value (cffi:foreign-slot-pointer sdl-event
-                                                      'sdl-cffi::sdl-keyboard-event
+                                                      '(:struct  sdl-cffi::sdl-keyboard-event)
                                                       'sdl-cffi::keysym)
                            'sdl-cffi::sdl-key-sym 'sdl-cffi::sym))
 
 (defun key-mod (sdl-event)
   (cffi:foreign-slot-value (cffi:foreign-slot-pointer sdl-event
-                                                      'sdl-cffi::sdl-keyboard-event
+                                                      '(:struct  sdl-cffi::sdl-keyboard-event)
                                                       'sdl-cffi::keysym)
                            'sdl-cffi::sdl-key-sym 'sdl-cffi::mod))
 
 (defun key-mod-key (sdl-event)
   (let ((mod-state (cffi:foreign-slot-value (cffi:foreign-slot-pointer sdl-event
-                                                                       'sdl-cffi::sdl-keyboard-event
+                                                                       '(:struct  sdl-cffi::sdl-keyboard-event)
                                                                        'sdl-cffi::keysym)
                                             'sdl-cffi::sdl-key-sym 'sdl-cffi::mod)))
     (remove nil (loop for key in (cffi:foreign-enum-keyword-list 'sdl-cffi::sdl-mod)
@@ -187,7 +187,7 @@
 
 (defun key-unicode (sdl-event)
   (cffi:foreign-slot-value (cffi:foreign-slot-pointer sdl-event
-                                                      'sdl-cffi::sdl-keyboard-event
+                                                      '(:struct  sdl-cffi::sdl-keyboard-event)
                                                       'sdl-cffi::keysym)
                            'sdl-cffi::sdl-key-sym 'sdl-cffi::unicode))
 
